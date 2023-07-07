@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+
+const pageTitle = "About";
+
+const identity = {
+    firstName: "Sarah",
+    country: "Canada",
+    occupation: "Escritor técnico",
+    hobbies: ["fotografia", "observación de aves", "peñarol"],
+};
+
+const skills = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Astro",
+    "Redacción de documentos",
+];
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+//CSS VARIABLE
+const skillColor = "red";
+const fw = "900";
+const fs = "2.5rem";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
+        <a href="/">Inicio</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+
+        <h1>About</h1>
+        <p>Datos :</p>
+        <ul>
+            <li>Me llamo {identity.firstName}</li>
+            <li>
+                Vivo en {identity.country} y trabajo como {identity.occupation}
+            </li>
+
+            <p>Mis habilidades son:</p>
+            <ul>
+                {skills.map((skill) => <li class="skill">{skill}</li>)}
+            </ul>
+        </ul>
+
+        {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+        {finished && <p>¡He terminado este tutorial!</p>}
+
+        {
+            goal === 3 ? (
+                <p>Mi objetivo es terminar en 3 días.</p>
+            ) : (
+                <p>Mi objetivo no son 3 días.</p>
+            )
+        }
+    </body>
+</html>
+
+<style define:vars={{ skillColor, fw, fs }}>
+    h1 {
+        color: purple;
+        font-size: 4rem;
+    }
+    .skill {
+        font-size: var(--fs);
+        font-weight: var(--fw);
+        color: var(--skillColor);
+    }
+</style>
